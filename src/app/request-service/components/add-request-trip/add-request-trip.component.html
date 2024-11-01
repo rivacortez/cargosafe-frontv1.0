@@ -1,0 +1,79 @@
+
+<div class="add-trip-card">
+  <div class="add-trip-header">
+    <i class="fa fa-plus-circle"></i>
+    <span>Solicita un Viaje</span>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #tripForm="ngForm" class="form-content">
+    <div class="input-group">
+      <label for="holderName">Nombre del Titular</label>
+      <input type="text" id="holderName" placeholder="Nombre del Titular" name="holderName" required [(ngModel)]="trip.holderName" #holderName="ngModel">
+      <div *ngIf="holderName.invalid && holderName.touched" class="error-message">Nombre del titular es requerido</div>
+    </div>
+
+    <div class="input-group">
+      <label for="unloadDirection">Punto de inicio (Lugar de carga)</label>
+      <input type="text" id="unloadDirection" placeholder="Punto de inicio" name="unload_direction" required [(ngModel)]="trip.unload_direction" #unloadDirection="ngModel">
+      <button type="button" (click)="getLocation()" class="location-button" aria-label="Obtener ubicación">
+        <i class="fa fa-location-arrow"></i>
+      </button>
+      <div *ngIf="unloadDirection.invalid && unloadDirection.touched" class="error-message">Punto de inicio es requerido</div>
+    </div>
+
+    <div class="input-group">
+      <label for="type">Tipo de carga</label>
+      <input type="text" id="type" placeholder="Tipo de carga" name="type" required [(ngModel)]="trip.type" #type="ngModel">
+      <div *ngIf="type.invalid && type.touched" class="error-message">Tipo de carga es requerido</div>
+    </div>
+
+    <div class="input-group">
+      <label for="numberPackages">Número de paquetes</label>
+      <input type="number" id="numberPackages" placeholder="Número de paquetes" name="numberPackages" required [(ngModel)]="trip.numberPackages" #numberPackages="ngModel">
+      <div *ngIf="numberPackages.invalid && numberPackages.touched" class="error-message">Número de paquetes es requerido</div>
+    </div>
+
+    <div class="input-group">
+      <label for="country">País (Destino)</label>
+      <select id="country" name="country" required [(ngModel)]="trip.country">
+        <option value="" disabled selected>Selecciona un país</option>
+        <option value="Perú">Perú</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="department">Departamento (Destino)</label>
+      <select id="department" name="department" required [(ngModel)]="selectedDepartment" (change)="onDepartmentChange()">
+        <option value="" disabled selected>Selecciona un departamento</option>
+        <option *ngFor="let department of departments" [value]="department">{{ department }}</option>
+      </select>
+      <div *ngIf="!selectedDepartment && tripForm.touched" class="error-message">Departamento es requerido</div>
+    </div>
+
+    <div class="input-group">
+      <label for="district">Distrito (Destino)</label>
+      <select id="district" name="district" required [(ngModel)]="trip.district">
+        <option value="" disabled selected>Selecciona un distrito</option>
+        <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
+      </select>
+      <div *ngIf="!trip.district && tripForm.touched" class="error-message">Distrito es requerido</div>
+    </div>
+
+    <div class="input-group">
+      <label for="destination">Dirección (Destino)</label>
+      <input type="text" id="destination" placeholder="Destino" name="destination" required [(ngModel)]="trip.destination" #destination="ngModel">
+      <div *ngIf="destination.invalid && destination.touched" class="error-message">La dirección es requerida</div>
+    </div>
+
+    <div class="button-container">
+      <button *ngIf="editMode" type="button" (click)="onCancel()" class="button cancel-button">
+        <i class="fa fa-times-circle"></i> Cancelar
+      </button>
+      <button type="submit" [disabled]="tripForm.invalid" class="button submit-button">
+        <i *ngIf="editMode" class="fa fa-save"></i>
+        <i *ngIf="!editMode" class="fa fa-plus-circle"></i>
+        {{ editMode ? 'Actualizar' : 'Agregar' }}
+      </button>
+    </div>
+  </form>
+</div>
