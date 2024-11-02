@@ -1,75 +1,22 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-  ViewChild
-} from '@angular/core';
-import { FormsModule, NgForm } from "@angular/forms";
-import { TripEntity } from "../../../trip/model/trip.entity";
-import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from "@angular/material/card";
-import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
-import { MatInput } from "@angular/material/input";
-import {MatButton, MatIconButton} from "@angular/material/button";
-import {DecimalPipe, NgForOf, NgIf} from "@angular/common";
-import {MatIcon} from "@angular/material/icon";
-
-import {MatDialog} from "@angular/material/dialog";
-import {MatOption, MatSelect} from "@angular/material/select";
-import {
-  DialogSuccessfullyComponent
-} from "../../../public/components/dialogs/dialog-successfully/dialog-successfully.component";
-import {RequestServiceEntity} from "../../model/request-service.entity";
+import { Component, OnInit, AfterViewInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import * as L from 'leaflet';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { DecimalPipe, NgIf, NgForOf } from '@angular/common';
+import {LocationDataEntity} from './model/location-data.entity';
 import {
   ToolbarEntrepreneurContentComponent
-} from "../../../public/components/toolbar-entrepreneur-content/toolbar-entrepreneur-content.component";
-import {Router} from "@angular/router";
-import {MapsComponent} from "../../../maps/maps.component";
-import {HttpClient} from "@angular/common/http";
-import {RequestService} from "../../service/request.service";
-import * as L from "leaflet";
-import {LocationDataEntity} from "../../../maps/model/location-data.entity";
+} from "../public/components/toolbar-entrepreneur-content/toolbar-entrepreneur-content.component";
 
 @Component({
-  selector: 'app-add-request-trip',
+  selector: 'app-maps',
   standalone: true,
-  imports: [
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
-    MatLabel,
-    MatFormField,
-    MatInput,
-    FormsModule,
-    MatButton,
-    NgIf,
-    MatCardTitle,
-    MatError,
-    MatIcon,
-    MatIconButton,
-    MatSelect,
-    MatOption,
-    NgForOf,
-    ToolbarEntrepreneurContentComponent,
-    MapsComponent,
-    DecimalPipe
-  ],
-  templateUrl: './add-request-trip.component.html',
-  styleUrl: './add-request-trip.component.css'
+  templateUrl: './maps.component.html',
+  imports: [FormsModule, HttpClientModule, DecimalPipe, NgIf, NgForOf, ToolbarEntrepreneurContentComponent],
+  styleUrls: ['./maps.component.css']
 })
-export class AddRequestTripComponent implements OnInit, AfterViewInit {
-  @Input() trip: RequestServiceEntity = new RequestServiceEntity({});
-  @Input() editMode: boolean = false;
-  @Output() tripAddRequested = new EventEmitter<RequestServiceEntity>();
-  @Output() tripUpdateRequested = new EventEmitter<RequestServiceEntity>();
-  @Output() cancelRequested = new EventEmitter();
-  @ViewChild('tripForm', { static: false }) tripForm!: NgForm;
-
-  private map: L.Map | undefined;
+export class MapsComponent /*implements OnInit, AfterViewInit*/ {
+ /* private map: L.Map | undefined;
   private pickupLocation: L.Marker | undefined;
   private destinationLocation: L.Marker | undefined;
   private polyline: L.Polyline | undefined;
@@ -79,21 +26,19 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
   public pickupSuggestions: any[] = [];
   public destinationSuggestions: any[] = [];
   public pickupLatLng: L.LatLng | null = null;
-  public destinationLatLng: L.LatLng | null = null;
+  public destinationLatLng: L.LatLng | null = null;*/
 
-  @ViewChild('mapContainer') mapContainer!: ElementRef;
+  /*@ViewChild('mapContainer') mapContainer!: ElementRef;*/
 
-  formValid: any;
-
-  constructor(private router: Router, private http: HttpClient, private requestService: RequestService) {}
+  /*constructor(private http: HttpClient) {}*/
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
+  /*ngAfterViewInit() {
     this.initMap();
-  }
+  }*/
 
-  private initMap(): void {
+  /*private initMap(): void {
     this.map = L.map(this.mapContainer.nativeElement, { zoomControl: true }).setView([-9.5524878, -74.9387723], 6);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -185,26 +130,20 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
 
   public async updateMarkers(): Promise<void> {
     try {
-      if (this.pickupAddress && this.destinationAddress) {
+      if (this.pickupLocation && this.destinationLocation) {
         const pickupLatLng = await this.getCoordinates(this.pickupAddress);
         const destinationLatLng = await this.getCoordinates(this.destinationAddress);
 
-        if (this.pickupLocation && this.destinationLocation) {
-          this.pickupLocation.setLatLng(pickupLatLng);
-          this.destinationLocation.setLatLng(destinationLatLng);
-          this.updatePolyline();
-          this.calculateDistance();
+        this.pickupLocation.setLatLng(pickupLatLng);
+        this.destinationLocation.setLatLng(destinationLatLng);
+        this.updatePolyline();
+        this.calculateDistance();
 
-          this.pickupLatLng = pickupLatLng;
-          this.destinationLatLng = destinationLatLng;
-
-          this.sendDataToBackend();
-        }
-      } else {
-        console.error('Pickup or destination address is missing');
+        // Llamar al método para enviar los datos al backend
+        this.sendDataToBackend();
       }
     } catch (error) {
-      console.error('Error getting coordinates', error);
+      console.error(error);
     }
   }
 
@@ -242,23 +181,16 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
 
   public sendDataToBackend(): void {
     if (this.pickupLatLng && this.destinationLatLng) {
-      const data = new RequestServiceEntity({
-        id: this.trip.id,
-        holderName: this.trip.holderName,
-        type: this.trip.type,
-        loadDetail: this.trip.loadDetail,
-        numberPackages: this.trip.numberPackages,
-        weight: this.trip.weight,
-        pickupAddress: this.pickupAddress,
-        destinationAddress: this.destinationAddress,
-        distance: this.distance,
-        pickupLat: this.pickupLatLng.lat,
-        pickupLng: this.pickupLatLng.lng,
-        destinationLat: this.destinationLatLng.lat,
-        destinationLng: this.destinationLatLng.lng
-      });
+      const data = new LocationDataEntity(
+        this.pickupAddress,
+        this.pickupLatLng.lat,
+        this.pickupLatLng.lng,
+        this.destinationAddress,
+        this.destinationLatLng.lat,
+        this.destinationLatLng.lng
+      );
 
-      this.requestService.saveRequestServiceTrip(data)
+      this.http.post('https://your-backend-url.com/api/locations', data)
         .subscribe(response => {
           console.log('Data sent successfully', response);
         }, error => {
@@ -292,38 +224,5 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.map?.invalidateSize();
-  }
-
-  openSuccessDialog(message: string): void {
-
-  }
-
-  onCancel() {
-    this.cancelRequested.emit();
-    this.resetEditState();
-  }
-
-  resetEditState() {
-    this.trip = new RequestServiceEntity({});
-    this.editMode = false;
-    this.tripForm.resetForm();
-  }
-
-  addAddressDetails(): void {
-    this.router.navigate(['/maps/details']);
-  }
-
-  public async onSubmit() {
-    try {
-      if (!this.pickupLatLng) {
-        this.pickupLatLng = await this.getCoordinates(this.pickupAddress);
-      }
-      if (!this.destinationLatLng) {
-        this.destinationLatLng = await this.getCoordinates(this.destinationAddress);
-      }
-      this.sendDataToBackend();
-    } catch (error) {
-      console.error('Error getting coordinates', error);
-    }
-  }
+  }*/
 }

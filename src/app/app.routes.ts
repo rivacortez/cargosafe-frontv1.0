@@ -34,6 +34,7 @@ import {SignupEntrepreneurComponent} from "./iam/pages/signup-entrepreneur/signu
 import {SignupCompanyComponent} from "./iam/pages/signup-company/signup-company.component";
 import {ProfileComponent} from "./profile/components/profile/profile.component";
 import {ListTripEntrepreneurComponent} from "./trip/pages/list-trip-entrepreneur/list-trip-entrepreneur.component";
+import {MapsComponent} from "./maps/maps.component";
 
 
 export const routes: Routes = [
@@ -77,7 +78,7 @@ export const routes: Routes = [
   {path:'list-trips', component: ListTripEntrepreneurComponent},
   { path: 'add-trip-details', component: AddDetailsTripComponent },
   { path: 'trip/details/:id', component: DetailsTripComponent },
-
+  { path: 'maps/details', component: MapsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -13,9 +13,7 @@
       "name": "ROLE_ENTREPRENEUR"
     }
   ],
-  "companies": [
-
-  ],
+  "companies": [],
   "memberships": [
     {
       "id": 1,
@@ -32,18 +30,10 @@
       "features": "Acceso completo y atención prioritaria"
     }
   ],
-  "authentication": [
-
-  ],
-  "users": [
-
-  ],
-  "entrepreneurs": [
-
-  ],
-  "profiles": [
-
-  ],
+  "authentication": [],
+  "users": [],
+  "entrepreneurs": [],
+  "profiles": [],
   "drivers": [
     {
       "id": 1,
@@ -81,9 +71,7 @@
       "url_image": "ASDASD"
     }
   ],
-  "trips": [
-
-  ],
+  "trips": [],
   "requestServiceTrips": [
 
   ],

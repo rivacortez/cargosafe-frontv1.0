@@ -15,18 +15,22 @@ export class RequestService extends BaseService<RequestServiceEntity> {
     this.resourceEndpoint = '/requestServiceTrips';
   }
 
-  acceptRequest(id: number): Observable<any> {
-    const url = `${this.basePath}/status`;
-    const statusUpdate = { id: id, status: 'accepted', requestServiceTripId: id };
-    return this.http.post(url, statusUpdate, this.httOptions).pipe(
+
+  saveRequestServiceTrip(trip: RequestServiceEntity): Observable<any> {
+    return this.http.post(this.resourcePath(), trip, this.httOptions).pipe(
       tap(() => this.notificationService.showNotification(
-        'Solicitud aceptada',
-        'The trip you requested has been approved.',
+        'Solicitud guardada',
+        'The trip has been saved successfully.',
         'success',
         'path/to/success-image.jpg'
       )),
       catchError(this.handleError)
     );
+  }
+
+  override handleError(error: HttpErrorResponse) {
+    console.error('Error saving trip', error);
+    return throwError(() => new Error('Error saving trip'));
   }
 
   private acceptedTrips: Set<number> = new Set<number>();
