@@ -19,9 +19,12 @@
 mat-card-title{
   font-size: 32px;
   margin: 36px 0;
-  color: #DD763D;
+  color: #a89c00;
 }
-
+.small-img {
+  width: 300px;
+  height: auto;
+}
 .form-login{
   display: flex;
   flex-direction: column;
@@ -50,13 +53,13 @@ mat-card-title{
 }
 
 .password p:hover{
-  color: #DD763D;
+  color: #ffeb00;
 }
 
 mat-form-field{
   width: 80%;
-  --mdc-outlined-text-field-focus-outline-color: #7ec306;
-  --mdc-outlined-text-field-focus-label-text-color: #7ec306;
+  --mdc-outlined-text-field-focus-outline-color: #ffeb00;
+  --mdc-outlined-text-field-focus-label-text-color: #ffeb00;
 }
 
 button{
