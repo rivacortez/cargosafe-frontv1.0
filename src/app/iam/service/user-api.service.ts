@@ -97,7 +97,7 @@ export class UserApiService {
 
   getByEmail(email: string): Observable<UserEntity> {
     return this.http.get<UserEntity[]>(`${this.baseUrl}?email=${email}`, this.httOptions).pipe(
-      map(users => users[0]), // Assuming email is unique and returns a single user
+      map(users => users[0]),
       catchError(this.handleError)
     );
   }

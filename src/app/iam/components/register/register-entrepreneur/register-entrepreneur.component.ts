@@ -82,7 +82,7 @@ export class RegisterEntrepreneurComponent {
           email,
           phone,
           password,
-          roleId: 3 // Assuming 3 is the roleId for ROLE_ENTREPRENEUR
+          roleId: 3
         };
 
         this.userApiService.create(user).subscribe({
@@ -90,25 +90,25 @@ export class RegisterEntrepreneurComponent {
             const entrepreneur = { id: 0, name, location, description, userId };
             this.entrepreneurApiService.create(entrepreneur).subscribe({
               next: () => {
-                this.router.navigateByUrl('/request/trip/new');
-                this.snackBar.open(`Bienvenido ${name} 🤗`, 'Cerrar', { duration: 2000 });
+                this.router.navigateByUrl('/login');
+                this.snackBar.open(`Bienvenido ${name} `, 'Cerrar', { duration: 2000 });
               },
               error: (error) => {
-                this.snackBar.open('Error al registrar el emprendedor😥', 'Cerrar', { duration: 5000 });
+                this.snackBar.open('Error al registrar el emprendedor', 'Cerrar', { duration: 5000 });
                 console.error(error);
                 this.registerForm.enable();
               }
             });
           },
           error: (error) => {
-            this.snackBar.open('Error al registrar el usuario😥', 'Cerrar', { duration: 5000 });
+            this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 5000 });
             console.error(error);
             this.registerForm.enable();
           }
         });
       },
       error: () => {
-        this.snackBar.open('Error al registrar el usuario😥', 'Cerrar', { duration: 3000 });
+        this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 3000 });
         this.registerForm.enable();
       }
     });

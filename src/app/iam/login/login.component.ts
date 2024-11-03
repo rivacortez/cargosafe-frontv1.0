@@ -65,6 +65,35 @@ export class LoginComponent implements OnInit {
 
     this.authenticationApiService.signIn(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       (response: any) => {
+        console.log(response);
+        const userId = response.id;
+        const roleId = response.roleId;
+        const userRole = response.role;
+        this.userApiService.setUserId(userId);
+        this.userApiService.setLogged(true);
+
+        if (roleId === 3) {
+          this.router.navigateByUrl('/home-entrepreneur');
+        } else if (roleId === 2) {
+          this.router.navigateByUrl('/home-company');
+        } else {
+          this.router.navigateByUrl('/login');
+        }
+
+        this.snackBar.open('Welcome ', 'Close', {duration: 2000});
+      },
+      error => {
+        this.snackBar.open('Error. Credentials not found', 'Close', {duration: 3000});
+      }
+    );
+
+
+
+
+    this.loginAttempts++;
+
+    this.authenticationApiService.signIn(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      (response: any) => {
         const userId = response.id;
         this.userApiService.setUserId(userId);
         this.userApiService.setLogged(true);

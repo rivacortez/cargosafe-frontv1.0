@@ -13,7 +13,29 @@
       "name": "ROLE_ENTREPRENEUR"
     }
   ],
-  "companies": [],
+  "companies": [
+    {
+      "id": 1,
+      "name": "eldeltestempresas",
+      "location": "eldeltestempresas",
+      "description": "eldeltestempresas",
+      "userId": 3
+    },
+    {
+      "id": 2,
+      "name": "eltestdefinitivo123empreson",
+      "location": "eltestdefinitivo123empreson@gmail.com",
+      "description": "eltestdefinitivo123empreson@gmail.com",
+      "userId": 11
+    },
+    {
+      "id": 3,
+      "name": "empresitalavadoradeactivos123",
+      "location": "sadasdasdasd",
+      "description": "asdasdasd",
+      "userId": 14
+    }
+  ],
   "memberships": [
     {
       "id": 1,
@@ -30,10 +52,208 @@
       "features": "Acceso completo y atención prioritaria"
     }
   ],
-  "authentication": [],
-  "users": [],
-  "entrepreneurs": [],
-  "profiles": [],
+  "authentication": [
+    {
+      "email": "eldeltest@gmail.com",
+      "password": "eldeltest",
+      "role": "ROLE_ENTREPRENEUR",
+      "id": 1
+    },
+    {
+      "email": "eldeltest@gmail.com",
+      "password": "eldeltest",
+      "id": 2
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "role": "ROLE_COMPANY",
+      "id": 3
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "id": 4
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "id": 5
+    },
+    {
+      "email": "eltestdefinitivo123@gmail.com",
+      "password": "eltestdefinitivo123",
+      "role": "ROLE_ENTREPRENEUR",
+      "id": 6
+    },
+    {
+      "email": "eltestdefinitivo123@gmai",
+      "password": "eltestdefinitivo123",
+      "id": 7
+    },
+    {
+      "email": "eltestdefinitivo123@gmai",
+      "password": "eltestdefinitivo123",
+      "id": 8
+    },
+    {
+      "email": "eltestdefinitivo123@gmail.com",
+      "password": "eltestdefinitivo123",
+      "id": 9
+    },
+    {
+      "email": "eltestdefinitivo123@gmail.com",
+      "password": "eltestdefinitivo123",
+      "id": 10
+    },
+    {
+      "email": "eltestdefinitivo123empreson@gmail.com",
+      "password": "eltestdefinitivo123empreson@gmail.com",
+      "role": "ROLE_COMPANY",
+      "id": 11
+    },
+    {
+      "email": "eltestdefinitivo123empreson@gmail.com",
+      "password": "eltestdefinitivo123empreson@gmail.com",
+      "id": 12
+    },
+    {
+      "email": "eltestdefinitivo123empreson@gmail.com",
+      "password": "eltestdefinitivo123empreson@gmail.com",
+      "id": 13
+    },
+    {
+      "email": "empresitalavadoradeactivos123@gmail.com",
+      "password": "empresitalavadoradeactivos123@gmail.com",
+      "role": "ROLE_COMPANY",
+      "id": 14
+    },
+    {
+      "email": "empresitalavadoradeactivos123@gmail.com",
+      "password": "empresitalavadoradeactivos123@gmail.com",
+      "id": 15
+    },
+    {
+      "email": "empresitalavadoradeactivos123@gmail.com",
+      "password": "empresitalavadoradeactivos123@gmail.com",
+      "id": 16
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "id": 17
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "id": 18
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "id": 19
+    },
+    {
+      "email": "eldeltestempresas@gmail.com",
+      "password": "eldeltestempresas",
+      "id": 20
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Pepito eldeltest",
+      "lastname": "",
+      "email": "eldeltest@gmail.com",
+      "phone": "937217273",
+      "password": "eldeltest",
+      "roleId": 3
+    },
+    {
+      "id": 3,
+      "name": "eldeltestempresas",
+      "lastname": "",
+      "email": "eldeltestempresas@gmail.com",
+      "phone": "855454546",
+      "password": "eldeltestempresas",
+      "roleId": 2
+    },
+    {
+      "id": 6,
+      "name": "eltestdefinitivo123",
+      "lastname": "",
+      "email": "eltestdefinitivo123@gmail.com",
+      "phone": "eltestdefinitivo123",
+      "password": "eltestdefinitivo123",
+      "roleId": 3
+    },
+    {
+      "id": 11,
+      "name": "eltestdefinitivo123empreson",
+      "lastname": "",
+      "email": "eltestdefinitivo123empreson@gmail.com",
+      "phone": "eltestdefinitivo123empreson@gmail.com",
+      "password": "eltestdefinitivo123empreson@gmail.com",
+      "roleId": 2
+    },
+    {
+      "id": 14,
+      "name": "empresitalavadoradeactivos123",
+      "lastname": "",
+      "email": "empresitalavadoradeactivos123@gmail.com",
+      "phone": "123123213",
+      "password": "empresitalavadoradeactivos123@gmail.com",
+      "roleId": 2
+    }
+  ],
+  "entrepreneurs": [
+    {
+      "id": 1,
+      "name": "Pepito eldeltest",
+      "location": "eldeltest",
+      "description": "eldeltest",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "eltestdefinitivo123",
+      "location": "eltestdefinitivo123",
+      "description": "eltestdefinitivo123",
+      "userId": 6
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userId": 1,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 3,
+      "userId": 6,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 4,
+      "userId": 11,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 5,
+      "userId": 14,
+      "bio": "",
+      "avatar": ""
+    }
+  ],
   "drivers": [
     {
       "id": 1,
@@ -244,7 +464,6 @@
       "loadDetail": "opop",
       "pickupAddress": "Cajamarca, Peru"
     },
-
     {
       "id": 8,
       "name": "",

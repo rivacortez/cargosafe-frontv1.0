@@ -84,25 +84,25 @@ export class RegisterCompanyComponent {
             const company = { id: 0, name, location, description, userId };
             this.companyApiService.create(company).subscribe({
               next: () => {
-                this.router.navigateByUrl('/list-request-trip');
-                this.snackBar.open(`Bienvenido ${name} 🤗`, 'Cerrar', { duration: 2000 });
+                this.router.navigateByUrl('/login');
+                this.snackBar.open(`Bienvenido ${name} `, 'Cerrar', { duration: 2000 });
               },
               error: (error) => {
-                this.snackBar.open('Error al registrar la compañía😥', 'Cerrar', { duration: 5000 });
+                this.snackBar.open('Error al registrar la compañía', 'Cerrar', { duration: 5000 });
                 console.error(error);
                 this.registerForm.enable();
               }
             });
           },
           error: (error) => {
-            this.snackBar.open('Error al registrar el usuario😥', 'Cerrar', { duration: 5000 });
+            this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 5000 });
             console.error(error);
             this.registerForm.enable();
           }
         });
       },
       error: () => {
-        this.snackBar.open('Error al registrar el usuario😥', 'Cerrar', { duration: 3000 });
+        this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 3000 });
         this.registerForm.enable();
       }
     });
