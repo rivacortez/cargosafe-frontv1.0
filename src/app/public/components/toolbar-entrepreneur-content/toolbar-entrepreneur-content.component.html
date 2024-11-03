@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="custom-toolbar">
   <span class="spacer"></span>
 
-  <div class="toolbar-content">
+  <div routerLink="/home-entrepreneur" class="toolbar-content">
     <img src="./assets/images/cargosafe-logo.png" class="issuer-img" alt="CargoSafe Logo" />
     <p class="header-title" aria-label="title">CargoSafe</p>
   </div>
@@ -9,15 +9,17 @@
   <span class="spacer"></span>
 
   <nav class="toolbar-nav">
-    <button mat-button class="nav-button" routerLink="/">Inicio</button>
+    <button mat-button class="nav-button" routerLink="/home-entrepreneur">Inicio</button>
     <button mat-button class="nav-button" routerLink="/list-request-history">Ver historial</button>
     <button mat-button class="nav-button" routerLink="/request/trip/new">
       <mat-icon>local_shipping</mat-icon>
       <span>Solicitar Servicio</span>
     </button>
-    <button mat-button class="nav-button" routerLink="/ongoing-trips">
-      <mat-icon>directions_car</mat-icon>
-      <span>Viajes en curso</span>
+
+
+    <button mat-button class="nav-button"  routerLink="/payment">
+      <mat-icon>payment</mat-icon>
+      <span>Pagar viajes aceptados</span>
     </button>
   </nav>
 

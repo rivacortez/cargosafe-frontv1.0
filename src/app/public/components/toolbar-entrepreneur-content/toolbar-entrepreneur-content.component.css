@@ -7,7 +7,9 @@
   .spacer {
     flex: 1;
   }
-
+  .toolbar-content {
+    cursor: pointer;
+  }
   .toolbar-content {
     display: flex;
     align-items: center;

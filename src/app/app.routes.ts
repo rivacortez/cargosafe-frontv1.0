@@ -36,11 +36,12 @@ import {ProfileComponent} from "./profile/components/profile/profile.component";
 import {ListTripEntrepreneurComponent} from "./trip/pages/list-trip-entrepreneur/list-trip-entrepreneur.component";
 import {MapsComponent} from "./maps/maps.component";
 import {PaymentComponent} from "./payment/component/payment/payment.component";
+import {HomeCompanyComponent} from "./public/pages/home-company/home-company.component";
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: 'home-company', component: HomeCompanyComponent},
 
 //IAM
   {path: 'login', component: LoginComponent},
@@ -75,7 +76,7 @@ export const routes: Routes = [
   {path:'request/trip/new', component: RequestComponent},
   {path:'list-request-trip', component:ListRequestTripComponent},
   {path:'list-request-history', component: ListRequestStatusComponent},
-
+  { path: 'home-entrepreneur', component: HomeComponent },
   {path:'list-trips', component: ListTripEntrepreneurComponent},
   { path: 'add-trip-details', component: AddDetailsTripComponent },
   { path: 'trip/details/:id', component: DetailsTripComponent },
