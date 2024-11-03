@@ -6,6 +6,12 @@ import {LanguageSwitcherComponent} from "../language-switcher/language-switcher.
 import {Router, RouterLink} from "@angular/router";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {UserApiService} from "../../../iam/service/user-api.service";
+import {NgClass, NgIf} from "@angular/common";
+import {
+  RequestNotificationComponent
+} from "../../../request-service/components/request-notification/request-notification.component";
+import {MatBadge} from "@angular/material/badge";
+import {RequestService} from "../../../request-service/service/request.service";
 
 @Component({
   selector: 'app-toolbar-content',
@@ -19,24 +25,42 @@ import {UserApiService} from "../../../iam/service/user-api.service";
     RouterLink,
     MatMenu,
     MatMenuTrigger,
-    MatMenuItem
+    MatMenuItem,
+    NgIf,
+    RequestNotificationComponent,
+    MatBadge,
+    NgClass
   ],
   templateUrl: './toolbar-content.component.html',
   styleUrl: './toolbar-content.component.css'
 })
-export class ToolbarContentComponent {
+export class ToolbarContentComponent  {
+  showNotifications: boolean = false;
+  notificationCount: number = 0;
+  isNotificationPanelExpanded: boolean = false;
 
-
-  constructor(private router: Router,private userApiService:UserApiService) {}
-
+  constructor(private router: Router, private userApiService: UserApiService, private requestService: RequestService) {}
 
   navigateToProfile() {
     this.router.navigate(['/profile']);
   }
 
+
+  loadNotificationCount(): void {
+    this.requestService.getAllRequests().subscribe(
+      requests => this.notificationCount = requests.length,
+      error => console.error('Error loading notification count', error)
+    );
+  }
   logout() {
     this.userApiService.setLogged(false);
     this.userApiService.setUserId(0);
     this.router.navigate(['/login']);
+  }
+
+
+
+  onNotificationDeleted() {
+    this.notificationCount--;
   }
 }

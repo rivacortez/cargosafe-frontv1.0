@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="custom-toolbar">
   <span class="spacer"></span>
 
   <div class="toolbar-content">
@@ -9,14 +9,15 @@
   <span class="spacer"></span>
 
   <nav class="toolbar-nav">
-    <button mat-button>Inicio</button>
-
-    <button mat-button routerLink="/list-request-history">
-      <span>Ver historial</span>
-    </button>
-    <button mat-button routerLink="/request/trip/new">
+    <button mat-button class="nav-button" routerLink="/">Inicio</button>
+    <button mat-button class="nav-button" routerLink="/list-request-history">Ver historial</button>
+    <button mat-button class="nav-button" routerLink="/request/trip/new">
       <mat-icon>local_shipping</mat-icon>
       <span>Solicitar Servicio</span>
+    </button>
+    <button mat-button class="nav-button" routerLink="/ongoing-trips">
+      <mat-icon>directions_car</mat-icon>
+      <span>Viajes en curso</span>
     </button>
   </nav>
 
@@ -29,6 +30,7 @@
     matBadge="{{ notificationCount }}"
     matBadgeColor="warn"
     (click)="toggleNotificationPanelWidth()"
+    class="notification-button"
   >
     <mat-icon>notifications</mat-icon>
     <span class="cdk-visually-hidden">You have {{ notificationCount }} new notifications</span>
@@ -38,7 +40,7 @@
     <app-list-trips-entrepreneur (notificationDeleted)="onNotificationDeleted()"></app-list-trips-entrepreneur>
   </mat-menu>
 
-  <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="Perfil">
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="Perfil" class="profile-button">
     <mat-icon>account_circle</mat-icon>
   </button>
 

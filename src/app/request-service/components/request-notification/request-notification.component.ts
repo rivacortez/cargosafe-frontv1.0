@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {RequestServiceEntity} from "../../model/request-service.entity";
 import {RequestService} from "../../service/request.service";
 import {DatePipe, NgForOf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-request-notification',
@@ -17,8 +18,9 @@ import {MatIcon} from "@angular/material/icon";
 })
 export class RequestNotificationComponent implements OnInit {
   requests: RequestServiceEntity[] = [];
+  @Output() notificationDeleted = new EventEmitter<void>();
 
-  constructor(private requestService: RequestService) {}
+  constructor(private requestService: RequestService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadRequests();
@@ -36,9 +38,11 @@ export class RequestNotificationComponent implements OnInit {
   }
 
   viewMore(): void {
-    // Implement the logic to view more details
+    this.router.navigate(['/list-request-trip']);
   }
 
-
-
+  deleteNotification(index: number): void {
+    this.requests.splice(index, 1);
+    this.notificationDeleted.emit();
+  }
 }

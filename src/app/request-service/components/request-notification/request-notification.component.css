@@ -1,7 +1,7 @@
 :root {
-  --primary-color: #f1f500;
-  --background-color: #0e0d0b;
-  --text-color: #ffffff;
+  --primary-color: #f1f500; /* Color principal */
+  --background-color: #0e0d0b; /* Color de fondo */
+  --text-color: #ff0000; /* Color del texto */
 }
 
 .notification-panel {
@@ -10,73 +10,87 @@
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 1200px; /* Añadir un ancho máximo para la panel */
+  margin: 20px auto; /* Centrar el panel en la página */
 }
 
-
 .panel-header {
-  font-size: 24px;
+  font-size: 24px; /* Tamaño de fuente del encabezado */
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 16px; /* Espacio debajo del encabezado */
   color: var(--primary-color);
+  text-align: center; /* Centrar el texto del encabezado */
 }
 
 .notification-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  justify-content: space-between; /* Espaciado entre elementos */
+  padding: 12px 0; /* Espaciado vertical */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
+}
+
+.notification-item:last-child {
+  border-bottom: none; /* Quitar la línea divisoria del último item */
 }
 
 .notification-details {
-  font-size: 18px;
+  font-size: 18px; /* Tamaño de fuente para detalles */
   color: var(--text-color);
+  flex: 1; /* Permitir que el contenedor ocupe el espacio restante */
+  padding-right: 10px; /* Espacio a la derecha */
 }
 
 .view-more-btn {
   background-color: var(--primary-color);
   color: var(--background-color);
-  padding: 8px 16px;
+  padding: 8px 16px; /* Espaciado interno */
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s; /* Transición suave al cambiar el color */
+  margin-right: 10px; /* Espacio entre los botones */
 }
 
 .view-more-btn:hover {
-  background-color: #e6e600;
+  background-color: #e6e600; /* Color al pasar el cursor */
 }
 
-@media (max-width: 768px) {
-  .wide-notification-panel {
-    min-width: 100%;
-    padding: 16px;
-  }
-
-  .panel-header {
-    font-size: 20px;
-  }
-
-  .notification-details {
-    font-size: 16px;
-  }
-}
-.wide-notification-panel {
-  min-width: 800px; /* Aumenta el ancho del panel */
-  max-width: 1000px; /* Define un ancho máximo más grande si es necesario */
-  padding: 24px;
-}
 .delete-btn {
-  background-color: transparent;
-  color: var(--primary-color);
-  border: none;
-  cursor: pointer;
-  padding: 0 8px;
-  font-size: 20px;
-  transition: color 0.3s;
+  background-color: transparent; /* Fondo transparente */
+  color: var(--primary-color); /* Color del icono */
+  border: none; /* Sin bordes */
+  cursor: pointer; /* Cambiar cursor al pasar */
+  padding: 0 8px; /* Espaciado horizontal */
+  font-size: 20px; /* Tamaño del icono */
+  transition: color 0.3s; /* Transición suave al cambiar color */
 }
 
 .delete-btn:hover {
-  color: red;
+  color: red; /* Color al pasar el cursor */
+}
+
+@media (max-width: 768px) {
+  .panel-header {
+    font-size: 20px; /* Tamaño de fuente en pantallas más pequeñas */
+  }
+
+  .notification-details {
+    font-size: 16px; /* Tamaño de fuente en pantallas más pequeñas */
+  }
+
+  .view-more-btn {
+    font-size: 14px; /* Tamaño de fuente del botón en pantallas más pequeñas */
+  }
+
+  .delete-btn {
+    font-size: 18px; /* Tamaño de fuente del botón de eliminar */
+  }
+}
+
+.wide-notification-panel {
+  min-width: 800px; /* Ancho mínimo */
+  max-width: 1000px; /* Ancho máximo */
+  padding: 24px; /* Espaciado del panel */
 }

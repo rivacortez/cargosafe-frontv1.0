@@ -50,6 +50,14 @@
       "phone": "945345345",
       "license": "34C1-243R",
       "url_photo": "FDFSDFSDF"
+    },
+    {
+      "id": 4,
+      "name": "SADAS",
+      "dni": "123213",
+      "phone": "123123",
+      "license": "QWEQWAS",
+      "url_photo": "ASDASDASD"
     }
   ],
   "vehicles": [
@@ -69,6 +77,14 @@
       "max_load": 1200,
       "volume": 120,
       "url_image": "ASDASD"
+    },
+    {
+      "id": 3,
+      "model": "ASDASD",
+      "plate": "ASDASD",
+      "max_load": 123123,
+      "volume": 213213,
+      "url_image": "SADASDASD"
     }
   ],
   "trips": [
@@ -357,7 +373,7 @@
       "unload_location": "",
       "unload_date": "2024-11-03T03:38:33.012Z",
       "distance": 684276.7153919818,
-      "statusId": 1 ,
+      "statusId": 1,
       "holderName": "opopop",
       "pickupAddress": "Cajamarca, Peru",
       "pickupLat": -6.25,

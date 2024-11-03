@@ -35,6 +35,7 @@ import {SignupCompanyComponent} from "./iam/pages/signup-company/signup-company.
 import {ProfileComponent} from "./profile/components/profile/profile.component";
 import {ListTripEntrepreneurComponent} from "./trip/pages/list-trip-entrepreneur/list-trip-entrepreneur.component";
 import {MapsComponent} from "./maps/maps.component";
+import {PaymentComponent} from "./payment/component/payment/payment.component";
 
 
 export const routes: Routes = [
@@ -80,6 +81,8 @@ export const routes: Routes = [
   { path: 'trip/details/:id', component: DetailsTripComponent },
   { path: 'maps/details', component: MapsComponent },
   { path: 'profile', component: ProfileComponent },
+  {path: 'payment',component: PaymentComponent},
   { path: '**', component: PageNotFoundComponent },
+
 ];
 //,canActivate: [AuthGuard]
