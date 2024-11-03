@@ -68,14 +68,13 @@ export class LoginComponent implements OnInit {
         console.log(response);
         const userId = response.id;
         const roleId = response.roleId;
-        const userRole = response.role;
         this.userApiService.setUserId(userId);
         this.userApiService.setLogged(true);
 
-        if (roleId === 3) {
-          this.router.navigateByUrl('/home-entrepreneur');
-        } else if (roleId === 2) {
+        if (roleId === 2) {
           this.router.navigateByUrl('/home-company');
+        } else if (roleId === 3) {
+          this.router.navigateByUrl('/home-entrepreneur');
         } else {
           this.router.navigateByUrl('/login');
         }
@@ -88,16 +87,23 @@ export class LoginComponent implements OnInit {
     );
 
 
-
-
     this.loginAttempts++;
 
     this.authenticationApiService.signIn(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       (response: any) => {
         const userId = response.id;
+        const roleId = response.roleId;
         this.userApiService.setUserId(userId);
         this.userApiService.setLogged(true);
-        this.router.navigateByUrl('/list-request-history');
+
+        if (roleId === 2) {
+          this.router.navigateByUrl('/home-company');
+        } else if (roleId === 3) {
+          this.router.navigateByUrl('/home-entrepreneur');
+        } else {
+          this.router.navigateByUrl('/login');
+        }
+
         this.snackBar.open('Welcome 🤗', 'Close', {duration: 2000});
       },
       error => {

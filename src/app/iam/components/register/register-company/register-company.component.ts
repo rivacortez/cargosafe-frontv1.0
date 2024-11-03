@@ -58,7 +58,7 @@ export class RegisterCompanyComponent {
 
   onSubmit() {
     if (this.registerForm.invalid) {
-      this.snackBar.open('Por favor, complete todos los campos requeridos.', 'Cerrar', { duration: 3000 });
+      this.snackBar.open('Please complete all required fields.', 'Close', { duration: 3000 });
       return;
     }
 
@@ -85,27 +85,28 @@ export class RegisterCompanyComponent {
             this.companyApiService.create(company).subscribe({
               next: () => {
                 this.router.navigateByUrl('/login');
-                this.snackBar.open(`Bienvenido ${name} `, 'Cerrar', { duration: 2000 });
+                this.snackBar.open(`Welcome ${name}`, 'Close', { duration: 2000 });
               },
               error: (error) => {
-                this.snackBar.open('Error al registrar la compañía', 'Cerrar', { duration: 5000 });
+                this.snackBar.open('Error registering the company', 'Close', { duration: 5000 });
                 console.error(error);
                 this.registerForm.enable();
               }
             });
           },
           error: (error) => {
-            this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 5000 });
+            this.snackBar.open('Error registering the user', 'Close', { duration: 5000 });
             console.error(error);
             this.registerForm.enable();
           }
         });
       },
       error: () => {
-        this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 3000 });
+        this.snackBar.open('Error registering the user', 'Close', { duration: 3000 });
         this.registerForm.enable();
       }
     });
+
   }
 
   goBack() {

@@ -64,11 +64,11 @@ export class RegisterEntrepreneurComponent {
 
   onSubmit() {
     if (this.registerForm.invalid) {
-      this.snackBar.open('Por favor, complete todos los campos requeridos.', 'Cerrar', { duration: 3000 });
+      this.snackBar.open('Please complete all required fields.', 'Close', {duration: 3000});
       return;
     }
 
-    const { email, password, name, phone, location, description } = this.registerForm.value;
+    const {email, password, name, phone, location, description} = this.registerForm.value;
 
     this.registerForm.disable();
 
@@ -78,7 +78,7 @@ export class RegisterEntrepreneurComponent {
         const user = {
           id: userId,
           name,
-          lastname: '', // Add lastname field if available
+          lastname: '',
           email,
           phone,
           password,
@@ -87,33 +87,32 @@ export class RegisterEntrepreneurComponent {
 
         this.userApiService.create(user).subscribe({
           next: () => {
-            const entrepreneur = { id: 0, name, location, description, userId };
+            const entrepreneur = {id: 0, name, location, description, userId};
             this.entrepreneurApiService.create(entrepreneur).subscribe({
               next: () => {
                 this.router.navigateByUrl('/login');
-                this.snackBar.open(`Bienvenido ${name} `, 'Cerrar', { duration: 2000 });
+                this.snackBar.open(`Welcome ${name}`, 'Close', {duration: 2000});
               },
               error: (error) => {
-                this.snackBar.open('Error al registrar el emprendedor', 'Cerrar', { duration: 5000 });
+                this.snackBar.open('Error registering the entrepreneur', 'Close', {duration: 5000});
                 console.error(error);
                 this.registerForm.enable();
               }
             });
           },
           error: (error) => {
-            this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 5000 });
+            this.snackBar.open('Error registering the user', 'Close', {duration: 5000});
             console.error(error);
             this.registerForm.enable();
           }
         });
       },
       error: () => {
-        this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 3000 });
+        this.snackBar.open('Error registering the user', 'Close', {duration: 3000});
         this.registerForm.enable();
       }
     });
   }
-
   goBack() {
     window.history.back();
   }

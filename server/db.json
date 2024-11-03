@@ -14,7 +14,34 @@
     }
   ],
   "companies": [
-
+    {
+      "id": 1,
+      "name": "Envios SAC",
+      "location": "Avenida test123a",
+      "description": "asdasdasdsad",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "pepitos123",
+      "location": "en el medio del mar",
+      "description": "venta de  hormigas",
+      "userId": 4
+    },
+    {
+      "id": 3,
+      "name": "z",
+      "location": "z@gmail.com",
+      "description": "z@gmail.com",
+      "userId": 7
+    },
+    {
+      "id": 4,
+      "name": "gggggggggggg",
+      "location": "qwdasdasdasd",
+      "description": "aaaaa",
+      "userId": 10
+    }
   ],
   "memberships": [
     {
@@ -33,16 +60,165 @@
     }
   ],
   "authentication": [
-
+    {
+      "email": "envios@gmail.com",
+      "password": "envios@gmail.com",
+      "role": "ROLE_COMPANY",
+      "id": 1
+    },
+    {
+      "email": "envios@gmail.com",
+      "password": "envios@gmail.com",
+      "id": 2
+    },
+    {
+      "email": "envios@gmail.com",
+      "password": "envios@gmail.com",
+      "id": 3
+    },
+    {
+      "email": "pepitos123@gmail.com",
+      "password": "pepitos123@gmail.com",
+      "role": "ROLE_COMPANY",
+      "id": 4
+    },
+    {
+      "email": "pepitos123@gmail.com",
+      "password": "pepitos123@gmail.com",
+      "id": 5
+    },
+    {
+      "email": "pepitos123@gmail.com",
+      "password": "pepitos123@gmail.com",
+      "id": 6
+    },
+    {
+      "email": "z@gmail.com",
+      "password": "z@gmail.com",
+      "role": "ROLE_COMPANY",
+      "id": 7
+    },
+    {
+      "email": "z@gmail.com",
+      "password": "z@gmail.com",
+      "id": 8
+    },
+    {
+      "email": "z@gmail.com",
+      "password": "z@gmail.com",
+      "id": 9
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "role": "ROLE_COMPANY",
+      "id": 10
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 11
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 12
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 13
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 14
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 15
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 16
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 17
+    },
+    {
+      "email": "gggggggggggg@gmail.com",
+      "password": "gggggggggggg@gmail.com",
+      "id": 18
+    }
   ],
   "users": [
-
+    {
+      "id": 1,
+      "name": "Envios SAC",
+      "lastname": "",
+      "email": "envios@gmail.com",
+      "phone": "987234512",
+      "password": "envios@gmail.com",
+      "roleId": 2
+    },
+    {
+      "id": 4,
+      "name": "pepitos123",
+      "lastname": "",
+      "email": "pepitos123@gmail.com",
+      "phone": "98712345",
+      "password": "pepitos123@gmail.com",
+      "roleId": 2
+    },
+    {
+      "id": 7,
+      "name": "z",
+      "lastname": "",
+      "email": "z@gmail.com",
+      "phone": "z@gmail.com",
+      "password": "z@gmail.com",
+      "roleId": 2
+    },
+    {
+      "id": 10,
+      "name": "gggggggggggg",
+      "lastname": "",
+      "email": "gggggggggggg@gmail.com",
+      "phone": "123243434",
+      "password": "gggggggggggg@gmail.com",
+      "roleId": 2
+    }
   ],
-  "entrepreneurs": [
-
-  ],
+  "entrepreneurs": [],
   "profiles": [
-
+    {
+      "id": 1,
+      "userId": 1,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 3,
+      "userId": 7,
+      "bio": "",
+      "avatar": ""
+    },
+    {
+      "id": 4,
+      "userId": 10,
+      "bio": "",
+      "avatar": ""
+    }
   ],
   "drivers": [
     {
@@ -97,12 +273,8 @@
       "url_image": "SADASDASD"
     }
   ],
-  "trips": [
-
-  ],
-  "requestServiceTrips": [
-
-  ],
+  "trips": [],
+  "requestServiceTrips": [],
   "status": [
     {
       "id": 1,
