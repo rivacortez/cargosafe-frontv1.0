@@ -243,6 +243,33 @@
       "destinationAddress": "Santiago de Surco, Province of Lima, Lima Metropolitan Area, Lima, Peru",
       "loadDetail": "opop",
       "pickupAddress": "Cajamarca, Peru"
+    },
+
+    {
+      "id": 8,
+      "name": "",
+      "type": "Pesada",
+      "weight": 0,
+      "unload_direction": "",
+      "unload_location": "",
+      "unload_date": "2024-11-03T03:38:33.012Z",
+      "expenseId": 0,
+      "alertId": 0,
+      "ongoing_tripId": 0,
+      "vehicleId": "2",
+      "driverId": "1",
+      "entrepreneurId": 0,
+      "destination": "",
+      "department": "",
+      "district": "",
+      "country": "",
+      "numberPackages": 5555,
+      "holderName": "opopop",
+      "destinationDate": "2024-01-24",
+      "totalAmount": 1200,
+      "destinationAddress": "Santiago de Surco, Province of Lima, Lima Metropolitan Area, Lima, Peru",
+      "loadDetail": "opop",
+      "pickupAddress": "Cajamarca, Peru"
     }
   ],
   "requestServiceTrips": [
@@ -453,5 +480,6 @@
       "expiration_date": "2026-09",
       "cvv": "123"
     }
-  ]
+  ],
+  "payments": []
 }

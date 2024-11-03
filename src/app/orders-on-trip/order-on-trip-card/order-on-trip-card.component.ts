@@ -59,7 +59,7 @@ import {ToolbarContentComponent} from "../../public/components/toolbar-content/t
   templateUrl: './order-on-trip-card.component.html',
   styleUrl: './order-on-trip-card.component.css'
 })
-export class OrderOnTripCardComponent {  // Attributes
+export class OrderOnTripCardComponent {
   @Input() orderOnTrip!: OrderOnTripEntity;
   @Input() editMode: boolean = false;
   @Output() orderOnTripAddRequested = new EventEmitter<OrderOnTripEntity>();

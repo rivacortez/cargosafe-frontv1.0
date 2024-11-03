@@ -14,9 +14,7 @@ import {DatePipe, NgForOf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
-import {
-  OrdersOnTripDialogComponent
-} from "../../components/Dialog/orders-on-trip-dialog/orders-on-trip-dialog.component";
+
 import {ToolbarContentComponent} from "../../../public/components/toolbar-content/toolbar-content.component";
 
 @Component({
@@ -59,21 +57,9 @@ export class OrdersOnTripManagementComponent implements OnInit {
   }
 
   openOrderDialog(orderOnTrip?: OrderOnTripEntity, editMode: boolean = false): void {
-    const dialogRef = this.dialog.open(OrdersOnTripDialogComponent, {
-      width: '500px',
-      data: { orderOnTrip: orderOnTrip || new OrderOnTripEntity({}), editMode: editMode }
-    });
 
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result?.action) {
-        if (result.action === 'add') {
-          this.onOrderOnTripAddRequested(result.order);
-        } else if (result.action === 'update') {
-          this.onOrderOnTripUpdateRequested(result.order);
-        }
-      }
-    });
+
   }
 
   protected onEditItem(item: OrderOnTripEntity) {

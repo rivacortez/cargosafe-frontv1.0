@@ -7,8 +7,8 @@
   background-color: #ffffff;
   font-family: Arial, sans-serif;
   padding: 10px;
-  border: 1px solid #ddd; /* Add a subtle border for better separation */
-  overflow: hidden; /* Prevent content overflow */
+  border: 1px solid #ddd;
+  overflow: hidden;
 }
 
 .panel-header {
@@ -19,15 +19,15 @@
   color: #000000;
   text-align: center;
   border-radius: 10px 10px 0 0;
-  border-bottom: 1px solid #ddd; /* Add a bottom border for separation */
-  padding: 10px 15px; /* Adjust padding for better spacing */
+  border-bottom: 1px solid #ddd;
+  padding: 10px 15px;
   border-bottom: 1px solid #eee;
 }
 
 .notification-item {
-  display: flex; /* Cambiado de grid a flex */
-  align-items: center; /* Alinea los elementos verticalmente */
-  justify-content: space-between; /* Distribuye el espacio entre los elementos */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 15px;
   border-bottom: 1px solid #eeeeee;
   transition: background-color 0.2s;
@@ -43,11 +43,11 @@
 }
 
 .notification-details {
-  flex: 1; /* Permite que este contenedor ocupe el espacio restante */
+  flex: 1;
   padding-right: 10px;
-  display: flex; /* Use flexbox for better layout control */
-  flex-direction: column; /* Arrange items vertically */
-  gap: 5px; /* Add spacing between details */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .notification-type {

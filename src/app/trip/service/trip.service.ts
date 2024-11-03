@@ -21,4 +21,9 @@ export class TripService extends BaseService<TripEntity> {
   public override update(id: number, trip: TripEntity): Observable<TripEntity> {
     return this.http.put<TripEntity>(`${this.resourcePath()}/${id}`, trip, this.httOptions);
   }
+
+  public getAllTrips(): Observable<TripEntity[]> {
+    return this.http.get<TripEntity[]>(this.resourcePath(), this.httOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }

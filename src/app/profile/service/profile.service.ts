@@ -30,7 +30,7 @@ export class ProfileService  extends BaseService<ProfileEntity> {
 
   getByUserId(userId: number): Observable<ProfileEntity> {
     return this.http.get<ProfileEntity[]>(`${this.baseUrl}?userId=${userId}`).pipe(
-      map(profiles => profiles[0]) // Assuming userId is unique and returns a single profile
+      map(profiles => profiles[0])
     );
   }
 }

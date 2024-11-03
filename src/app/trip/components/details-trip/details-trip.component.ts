@@ -182,6 +182,6 @@ export class DetailsTripComponent implements OnInit {
   }
 
   openAssignDialog(trip: TripEntity): void {
-    // Implementation for opening the dialog
+
   }
 }
