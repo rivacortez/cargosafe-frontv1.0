@@ -74,16 +74,16 @@ import {MatOption, MatSelect} from "@angular/material/select";
   styleUrl: './list-request-trip.component.css'
 })
 export class ListRequestTripComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'type', 'unload_direction', 'unload_location', 'unload_date', 'destination', 'department', 'district', 'country', 'actions'];
+  displayedColumns: string[] = ['id', 'holderName', 'loadDetail', 'destinationAddress','pickupAddress' ,'unload_date', 'actions'];
   dataSource = new MatTableDataSource<RequestServiceEntity>();
   columns = [
     { def: 'id', header: 'ID' },
-    { def: 'type', header: 'Tipo' },
-    { def: 'unload_direction', header: 'Punto de Inicio' },
-    { def: 'unload_location', header: 'Ubicación de Descarga' },
+    { def: 'holderName', header: 'Cliente' },
+    { def: 'loadDetail', header: 'Detalles del pedido' },
+    { def: 'destinationAddress', header: 'Ubicación de Descarga' },
+    { def: 'pickupAddress', header: 'Ubicacion de carga' },
     { def: 'unload_date', header: 'Fecha de Solicitud' },
-    { def: 'destination', header: 'Destino' },
-    { def: 'department', header: 'Departamento' },
+    { def: 'actions', header: 'Acciones' },
     { def: 'district', header: 'Distrito' },
     { def: 'country', header: 'País' }
   ];
@@ -173,7 +173,10 @@ export class ListRequestTripComponent implements OnInit, AfterViewInit {
       district: trip.district,
       country: trip.country,
       numberPackages: trip.numberPackages,
-      holderName: trip.holderName
+      holderName: trip.holderName,
+      loadDetail: trip.loadDetail,
+      destinationAddress: trip.destinationAddress,
+      pickupAddress: trip.pickupAddress
     });
     this.tripService.create(newTrip).subscribe(
       () => {

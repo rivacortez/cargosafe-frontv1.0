@@ -14,7 +14,11 @@ export class RequestService extends BaseService<RequestServiceEntity> {
     this.http = http;
     this.resourceEndpoint = '/requestServiceTrips';
   }
-
+  getAllRequests(): Observable<RequestServiceEntity[]> {
+    return this.http.get<RequestServiceEntity[]>(this.resourcePath()).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   saveRequestServiceTrip(trip: RequestServiceEntity): Observable<any> {
     return this.http.post(this.resourcePath(), trip, this.httOptions).pipe(
@@ -56,4 +60,7 @@ export class RequestService extends BaseService<RequestServiceEntity> {
       catchError(this.handleError)
     );
   }
+
+
+
 }

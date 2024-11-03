@@ -9,6 +9,14 @@
   color: var(--text-color);
   padding: 0 16px;
 }
+.wide-menu {
+  min-width: 1200px;
+  transition: min-width 0.3s ease;
+}
+
+.wide-menu.expanded {
+  min-width: 1400px;
+}
 
 .toolbar-content {
   display: flex;

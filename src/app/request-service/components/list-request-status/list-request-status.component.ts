@@ -54,7 +54,7 @@ import {
   styleUrl: './list-request-status.component.css'
 })
 export class ListRequestStatusComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'type', 'unload_direction', 'unload_location', 'unload_date', 'destination', 'department', 'district', 'country', 'result'];
+  displayedColumns: string[] = ['id', 'holderName', 'loadDetail', 'destinationAddress','pickupAddress' ,'unload_date','result'];
   dataSource = new MatTableDataSource<RequestServiceEntity>();
   searchId: string = '';
   @ViewChild(MatSort) sort!: MatSort;

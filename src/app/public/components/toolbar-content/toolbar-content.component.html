@@ -9,10 +9,21 @@
   <span class="spacer"></span>
 
   <nav class="toolbar-nav">
-    <button mat-button routerLink="/ordersOnTrip">
+    <button mat-button [matMenuTriggerFor]="registroMenu">
       <mat-icon>assignment</mat-icon>
       <span class="nav-text">Registro</span>
     </button>
+
+    <mat-menu #registroMenu="matMenu">
+      <button mat-menu-item routerLink="/list-request-trip">
+        <mat-icon>assignment</mat-icon>
+        <span>Solicitudes de Viaje</span>
+      </button>
+      <button mat-menu-item routerLink="/add-trip-details">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Administrar Viajes</span>
+      </button>
+    </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="driversMenu" aria-label="Conductores">
       <mat-icon>people</mat-icon>

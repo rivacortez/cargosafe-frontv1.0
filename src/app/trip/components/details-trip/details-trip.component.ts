@@ -88,7 +88,6 @@ export class DetailsTripComponent implements OnInit {
     this.loadVehicles();
   }
 
-
   loadTripDetails(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -183,9 +182,6 @@ export class DetailsTripComponent implements OnInit {
   }
 
   openAssignDialog(trip: TripEntity): void {
-
-
-
+    // Implementation for opening the dialog
   }
-
 }

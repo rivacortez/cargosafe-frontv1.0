@@ -1,0 +1,82 @@
+:root {
+  --primary-color: #f1f500;
+  --background-color: #0e0d0b;
+  --text-color: #ffffff;
+}
+
+.notification-panel {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.panel-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: var(--primary-color);
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-details {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.view-more-btn {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-more-btn:hover {
+  background-color: #e6e600;
+}
+
+@media (max-width: 768px) {
+  .wide-notification-panel {
+    min-width: 100%;
+    padding: 16px;
+  }
+
+  .panel-header {
+    font-size: 20px;
+  }
+
+  .notification-details {
+    font-size: 16px;
+  }
+}
+.wide-notification-panel {
+  min-width: 800px; /* Aumenta el ancho del panel */
+  max-width: 1000px; /* Define un ancho máximo más grande si es necesario */
+  padding: 24px;
+}
+.delete-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  padding: 0 8px;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.delete-btn:hover {
+  color: red;
+}

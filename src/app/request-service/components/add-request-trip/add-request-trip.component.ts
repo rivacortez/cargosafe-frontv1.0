@@ -85,7 +85,9 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
 
   formValid: any;
 
-  constructor(private router: Router, private http: HttpClient, private requestService: RequestService) {}
+  constructor(private router: Router, private http: HttpClient, private requestService: RequestService
+  ,  private dialog: MatDialog
+  ) {}
 
   ngOnInit() {}
 
@@ -242,6 +244,7 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
 
   public sendDataToBackend(): void {
     if (this.pickupLatLng && this.destinationLatLng) {
+      const currentDate = new Date().toISOString();
       const data = new RequestServiceEntity({
         id: this.trip.id,
         holderName: this.trip.holderName,
@@ -255,12 +258,14 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
         pickupLat: this.pickupLatLng.lat,
         pickupLng: this.pickupLatLng.lng,
         destinationLat: this.destinationLatLng.lat,
-        destinationLng: this.destinationLatLng.lng
+        destinationLng: this.destinationLatLng.lng,
+        unload_date: currentDate
       });
 
       this.requestService.saveRequestServiceTrip(data)
         .subscribe(response => {
           console.log('Data sent successfully', response);
+          this.openSuccessDialog('Solicitud registrada exitosamente');
         }, error => {
           console.error('Error sending data', error);
         });
@@ -294,9 +299,6 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
     this.map?.invalidateSize();
   }
 
-  openSuccessDialog(message: string): void {
-
-  }
 
   onCancel() {
     this.cancelRequested.emit();
@@ -325,5 +327,11 @@ export class AddRequestTripComponent implements OnInit, AfterViewInit {
     } catch (error) {
       console.error('Error getting coordinates', error);
     }
+  }
+
+  openSuccessDialog(message: string): void {
+    this.dialog.open(DialogSuccessfullyComponent, {
+      data: { message }
+    });
   }
 }

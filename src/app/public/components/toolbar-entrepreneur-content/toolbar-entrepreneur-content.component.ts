@@ -5,12 +5,10 @@ import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {LanguageSwitcherComponent} from "../language-switcher/language-switcher.component";
 import {Router, RouterLink} from "@angular/router";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {Subject, takeUntil} from "rxjs";
 import {MatBadge} from "@angular/material/badge";
-import {StatusEntity} from "../../../request-service/model/status.entity";
-import {StatusService} from "../../../request-service/service/status.service";
-import {NotificationsComponent} from "../../../request-service/components/notifications/notifications.component";
+import {TripService} from "../../../trip/service/trip.service";
 import {UserApiService} from "../../../iam/service/user-api.service";
 import {
   ListTripsEntrepreneurComponent
@@ -33,27 +31,27 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     NgIf,
     NgForOf,
     MatBadge,
-    NotificationsComponent,
     MatDialogModule,
-    ListTripsEntrepreneurComponent
-
+    ListTripsEntrepreneurComponent,
+    NgClass
   ],
   templateUrl: './toolbar-entrepreneur-content.component.html',
   styleUrl: './toolbar-entrepreneur-content.component.css'
 })
-export class ToolbarEntrepreneurContentComponent  implements OnInit, OnDestroy {
+export class ToolbarEntrepreneurContentComponent implements OnInit, OnDestroy {
   notificationCount: number = 0;
-  notifications: StatusEntity[] = [];
+  isNotificationPanelExpanded: boolean  = false;
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private statusService: StatusService,
-              private router: Router,
-              private userApiService: UserApiService,
-              private dialog: MatDialog
-               ) {}
+  constructor(
+    private tripService: TripService,
+    private router: Router,
+    private userApiService: UserApiService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.loadStatuses();
+    this.loadTrips();
   }
 
   ngOnDestroy(): void {
@@ -61,26 +59,22 @@ export class ToolbarEntrepreneurContentComponent  implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  loadStatuses(): void {
-    this.statusService.getAllStatuses().pipe(
+  loadTrips(): void {
+    this.tripService.getAll().pipe(
       takeUntil(this.unsubscribe$)
     ).subscribe({
-      next: (statuses) => {
-        this.notifications = statuses;
-        this.notificationCount = this.notifications.length;
+      next: (trips) => {
+        this.notificationCount = trips.length;
       },
       error: (err) => {
-        console.error('Failed to load statuses', err);
+        console.error('Failed to load trips', err);
       }
     });
   }
+
   logout() {
     this.userApiService.setLogged(false);
     this.router.navigate(['/login']);
-  }
-  removeNotification(index: number): void {
-    this.notifications.splice(index, 1);
-    this.notificationCount = this.notifications.length;
   }
 
   openTripsDialog(): void {
@@ -90,4 +84,13 @@ export class ToolbarEntrepreneurContentComponent  implements OnInit, OnDestroy {
       panelClass: 'custom-dialog-container'
     });
   }
+
+  toggleNotificationPanelWidth(): void {
+    this.isNotificationPanelExpanded = !this.isNotificationPanelExpanded;
+  }
+
+  onNotificationDeleted(): void {
+    this.notificationCount--;
+  }
+
 }

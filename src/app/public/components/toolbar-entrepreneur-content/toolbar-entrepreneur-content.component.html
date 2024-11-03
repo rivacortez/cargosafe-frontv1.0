@@ -10,7 +10,10 @@
 
   <nav class="toolbar-nav">
     <button mat-button>Inicio</button>
-    <button mat-button>Ver historial</button>
+
+    <button mat-button routerLink="/list-request-history">
+      <span>Ver historial</span>
+    </button>
     <button mat-button routerLink="/request/trip/new">
       <mat-icon>local_shipping</mat-icon>
       <span>Solicitar Servicio</span>
@@ -25,13 +28,14 @@
     [matMenuTriggerFor]="tripsMenu"
     matBadge="{{ notificationCount }}"
     matBadgeColor="warn"
+    (click)="toggleNotificationPanelWidth()"
   >
     <mat-icon>notifications</mat-icon>
     <span class="cdk-visually-hidden">You have {{ notificationCount }} new notifications</span>
   </button>
 
-  <mat-menu #tripsMenu="matMenu" class="custom-dropdown-panel">
-    <app-list-trips-entrepreneur></app-list-trips-entrepreneur>
+  <mat-menu #tripsMenu="matMenu" class="custom-dropdown-panel wide-menu" [ngClass]="{'expanded': isNotificationPanelExpanded}">
+    <app-list-trips-entrepreneur (notificationDeleted)="onNotificationDeleted()"></app-list-trips-entrepreneur>
   </mat-menu>
 
   <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="Perfil">

@@ -20,6 +20,9 @@ export class TripEntity {
   holderName: string;
   destinationDate: string;
   totalAmount: number;
+  destinationAddress: string;
+  loadDetail: string;
+  pickupAddress: string;
 
   constructor(trip: {
     id?: number,
@@ -42,7 +45,10 @@ export class TripEntity {
     numberPackages?: number,
     holderName?: string,
     destinationDate?: string,
-    totalAmount?: number
+    totalAmount?: number,
+    destinationAddress?: string,
+    loadDetail?: string,
+    pickupAddress?: string
   } = {}) {
     this.id = trip.id || 0;
     this.name = trip.name || '';
@@ -65,5 +71,8 @@ export class TripEntity {
     this.holderName = trip.holderName || '';
     this.destinationDate = trip.destinationDate || '';
     this.totalAmount = trip.totalAmount || 0;
+    this.destinationAddress = trip.destinationAddress || '';
+    this.loadDetail = trip.loadDetail || '';
+    this.pickupAddress = trip.pickupAddress || '';
   }
 }

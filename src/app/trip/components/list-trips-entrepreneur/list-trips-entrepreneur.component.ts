@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DatePipe, NgForOf} from "@angular/common";
 import {TripEntity} from "../../model/trip.entity";
 import {TripService} from "../../service/trip.service";
@@ -7,6 +7,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {
   ToolbarEntrepreneurContentComponent
 } from "../../../public/components/toolbar-entrepreneur-content/toolbar-entrepreneur-content.component";
+import {Router} from "@angular/router";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-list-trips-entrepreneur',
@@ -14,6 +16,7 @@ import {
   imports: [
     NgForOf,
     DatePipe,
+    MatIcon,
 
   ],
   templateUrl: './list-trips-entrepreneur.component.html',
@@ -21,10 +24,11 @@ import {
 })
 export class ListTripsEntrepreneurComponent implements OnInit {
   trips: TripEntity[] = [];
-
+  @Output() notificationDeleted = new EventEmitter<void>();
   constructor(
     private tripService: TripService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +45,14 @@ export class ListTripsEntrepreneurComponent implements OnInit {
   private handleError(message: string, error: any): void {
     console.error(message, error);
     this.snackBar.open(message, 'Cerrar', { duration: 2000 });
+  }
+
+  viewMore(): void {
+    this.router.navigate(['/list-request-history']);
+  }
+
+  deleteNotification(index: number): void {
+    this.trips.splice(index, 1);
+    this.notificationDeleted.emit();
   }
 }

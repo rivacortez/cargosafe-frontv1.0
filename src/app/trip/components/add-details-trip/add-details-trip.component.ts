@@ -63,7 +63,7 @@ export class AddDetailsTripComponent implements OnInit {
   drivers: DriverEntity[] = [];
   vehicles: VehiclesEntity[] = [];
   tripForm: FormGroup;
-  displayedColumns: string[] = ['id', 'type', 'destination', 'actions'];
+  displayedColumns: string[] = ['id', 'type', 'destination', 'unload_date','actions',];
   searchId: string = '';
   constructor(
     private tripService: TripService,

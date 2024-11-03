@@ -12,9 +12,11 @@
     </div>
 
     <div class="trip-info-section">
-
       <p><strong>Tipo:</strong> {{ trip.type }}</p>
-      <p><strong>Destino:</strong> {{ trip.destination }}</p>
+      <p><strong>Destino:</strong> {{ trip.destinationAddress }}</p>
+      <p><strong>Cliente:</strong> {{ trip.holderName }}</p>
+      <p><strong>Detalle del pedido:</strong> {{ trip.loadDetail }}</p>
+      <p><strong>Ubicacion de Carga:</strong> {{ trip.pickupAddress }}</p>
       <p><strong>Conductor:</strong> {{ driverName }}</p>
       <p><strong>Vehículo:</strong> {{ vehiclePlate }}</p>
       <p><strong>Fecha Estimada de Entrega:</strong> {{ trip.destinationDate | date }}</p>
